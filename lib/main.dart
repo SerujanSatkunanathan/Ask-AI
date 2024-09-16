@@ -67,21 +67,23 @@ class _MyAppState extends State<MyApp> {
       convo.add(Chat(inputText, true));
       _isLoading = true;
     });
-
+    var outputText;
     try {
       var response = await gemini.text(inputText);
       if (response != null && response.output != null) {
-        var outputText = response.output?.toString().trim() ?? '';
+        outputText = response.output?.toString().trim() ?? '';
         setState(() {
           convo.add(Chat(outputText, false));
         });
-        await _speak(outputText);
+
+        _controller.clear();
       }
     } catch (e) {
       print("Error: $e");
       setState(() {
         convo.add(Chat("Error occurred: $e", false));
       });
+      await _speak(outputText.toString());
     }
 
     setState(() {
