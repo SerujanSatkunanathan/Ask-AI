@@ -3,7 +3,7 @@ import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
 void main() {
-  Gemini.init(apiKey: 'AIzaSyD4sct6oXarl6MRqiyqXwpzYMfzhRlEjgQ');
+  Gemini.init(apiKey: 'Api');
   runApp(const MyApp());
 }
 
